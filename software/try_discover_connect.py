@@ -15,7 +15,7 @@ def handler(result):
 
 BleScanner.set_handler(handler)
 BleScanner.start()
-sleep(5.0)
+sleep(3.0)
 BleScanner.stop()
 
 Bid_arr = []
