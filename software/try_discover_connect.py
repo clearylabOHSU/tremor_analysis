@@ -1,4 +1,4 @@
-from mbientlab.metawear.cbindings import *
+
 from mbientlab.warble import *
 from time import sleep
 import six
