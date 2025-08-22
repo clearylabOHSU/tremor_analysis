@@ -3,6 +3,7 @@ from mbientlab.metawear.cbindings import *
 from threading import Event
 from mbientlab.warble import *
 from time import sleep
+import six
 
 class Accelerometer:
 
