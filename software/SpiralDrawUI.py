@@ -1171,9 +1171,6 @@ class spiralDrawSystem(QtWidgets.QMainWindow):
 		else:
 			tmp_str = ''
 
-		print(self.accel_files)
-		print(tmp_str)
-
 		if tmp_str == '' or (tmp_str in self.accel_files):
 			self.accelDeviceUpdates.setText('Please select an unused trial name.')
 			self.accelDeviceUpdates.setStyleSheet('Color: red;')
