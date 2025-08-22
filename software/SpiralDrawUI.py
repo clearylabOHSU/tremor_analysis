@@ -942,7 +942,7 @@ class spiralDrawSystem(QtWidgets.QMainWindow):
 		print(self.accel_address)
 
 		# Update the label
-		currAccelDeviceLabel.setText(self.accel_address)
+		self.currAccelDeviceLabel.setText(self.accel_address)
 
 
 	# Function to start the case

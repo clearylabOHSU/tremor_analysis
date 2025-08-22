@@ -263,6 +263,7 @@ class Accelerometer:
 	# Scan for available devices
 	def scan_devices(self):
 		devices = {}
+		self.MetaWearDetected = []
 
 		def handler(result):
 			devices[result.mac] = result.name
