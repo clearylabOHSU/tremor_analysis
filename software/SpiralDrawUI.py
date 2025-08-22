@@ -933,6 +933,8 @@ class spiralDrawSystem(QtWidgets.QMainWindow):
 		for i in range(len(self.accelDevice.MetaWearDetected)):
 			self.deviceList.addItem(self.accelDevice.MetaWearDetected[i])
 
+		self.deviceList.addItem('No Accel - Spiral Only')
+
 	# Add and select the device to connect to
 	def set_accel_btid(self):
 
