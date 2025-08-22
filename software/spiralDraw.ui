@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1936</width>
-    <height>1167</height>
+    <width>1792</width>
+    <height>988</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -33,7 +33,7 @@
      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="caseSelect">
      <attribute name="title">
@@ -719,8 +719,8 @@
      <widget class="QLabel" name="accelDeviceUpdate">
       <property name="geometry">
        <rect>
-        <x>1000</x>
-        <y>220</y>
+        <x>600</x>
+        <y>300</y>
         <width>701</width>
         <height>121</height>
        </rect>
@@ -737,58 +737,75 @@
      <widget class="QGroupBox" name="select_device_group">
       <property name="geometry">
        <rect>
-        <x>1230</x>
-        <y>100</y>
+        <x>1240</x>
+        <y>70</y>
         <width>471</width>
-        <height>80</height>
+        <height>351</height>
        </rect>
       </property>
       <property name="title">
        <string>Select Device</string>
       </property>
-      <widget class="QRadioButton" name="penRadio">
+      <widget class="QListWidget" name="device_list">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>30</y>
+         <width>256</width>
+         <height>192</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="scan_device_button">
+       <property name="geometry">
+        <rect>
+         <x>290</x>
+         <y>40</y>
+         <width>151</width>
+         <height>32</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Scan For Devices</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="select_device_button">
+       <property name="geometry">
+        <rect>
+         <x>290</x>
+         <y>90</y>
+         <width>151</width>
+         <height>32</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Select Device</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_6">
        <property name="geometry">
         <rect>
          <x>10</x>
-         <y>30</y>
-         <width>141</width>
-         <height>41</height>
+         <y>250</y>
+         <width>131</width>
+         <height>51</height>
         </rect>
        </property>
        <property name="text">
-        <string>Pen (Gray)</string>
+        <string>Currently Selected:</string>
        </property>
       </widget>
-      <widget class="QRadioButton" name="tabletRadio">
+      <widget class="QLabel" name="current_device_label">
        <property name="geometry">
         <rect>
-         <x>130</x>
-         <y>30</y>
-         <width>141</width>
-         <height>41</height>
+         <x>140</x>
+         <y>240</y>
+         <width>241</width>
+         <height>71</height>
         </rect>
        </property>
        <property name="text">
-        <string>Tablet (White)</string>
-       </property>
-       <property name="checked">
-        <bool>true</bool>
-       </property>
-      </widget>
-      <widget class="QRadioButton" name="spiralOnlyRadio">
-       <property name="geometry">
-        <rect>
-         <x>280</x>
-         <y>30</y>
-         <width>191</width>
-         <height>41</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>No Accel (Spiral Only)</string>
-       </property>
-       <property name="checked">
-        <bool>false</bool>
+        <string>None</string>
        </property>
       </widget>
      </widget>
@@ -995,7 +1012,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1936</width>
+     <width>1792</width>
      <height>24</height>
     </rect>
    </property>

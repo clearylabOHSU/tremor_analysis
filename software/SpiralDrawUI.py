@@ -87,7 +87,10 @@ class spiralDrawSystem(QtWidgets.QMainWindow):
 		# Acclerometer
 		#self.accel_address = 'C5:02:6A:76:E4:5D'
 		self.accel_address = ''
-		self.accelDevice = Accelerometer(self.accel_address)
+		self.accelDevice = Accelerometer()
+
+		# Scan for BT devices
+		self.scan_update_device()
 
 		# Ensure device is not
 		#self.accelDevice.scan_connect()
@@ -142,6 +145,10 @@ class spiralDrawSystem(QtWidgets.QMainWindow):
 		self.analyzeAccelDataButton.clicked.connect(self.analyze_data)
 		self.generatePDFButton = self.findChild(QtWidgets.QPushButton, 'generate_pdf_report')
 		self.generatePDFButton.clicked.connect(self.generate_pdf)
+		self.scanBTDeviceButton = self.findChild(QtWidgets.QPushButton, 'scan_device_button')
+		self.scanBTDeviceButton.clicked.connect(self.scan_update_device)
+		self.setAccelIDButton = self.findChild(QtWidgets.QPushButton, 'select_device_button')
+		self.setAccelIDButton.clicked.connect(self.set_accel_btid)
 
 
 		# Radio Button
@@ -150,9 +157,9 @@ class spiralDrawSystem(QtWidgets.QMainWindow):
 		self.postopRadioButton = self.findChild(QtWidgets.QRadioButton, 'postopRadio')
 		self.otherRadioButton = self.findChild(QtWidgets.QRadioButton, 'otherRadio')
 		self.testRadioButton = self.findChild(QtWidgets.QRadioButton, 'testRadio')
-		self.penRadioButton = self.findChild(QtWidgets.QRadioButton, 'penRadio')
-		self.tabletRadioButton = self.findChild(QtWidgets.QRadioButton, 'tabletRadio')
-		self.spiralOnlyRadioButton = self.findChild(QtWidgets.QRadioButton, 'spiralOnlyRadio')
+		#self.penRadioButton = self.findChild(QtWidgets.QRadioButton, 'penRadio')
+		#self.tabletRadioButton = self.findChild(QtWidgets.QRadioButton, 'tabletRadio')
+		#self.spiralOnlyRadioButton = self.findChild(QtWidgets.QRadioButton, 'spiralOnlyRadio')
 		self.CCWPlotRadio = self.findChild(QtWidgets.QRadioButton, 'ccw_plot_radio')
 		self.CWPlotRadio = self.findChild(QtWidgets.QRadioButton, 'cw_plot_radio')
 		self.LinePlotRadio = self.findChild(QtWidgets.QRadioButton, 'line_plot_radio')
@@ -230,6 +237,7 @@ class spiralDrawSystem(QtWidgets.QMainWindow):
 		self.SpiralCCWArea = self.findChild(QtWidgets.QLabel, 'spiral_ccw_draw')
 		self.SpiralCWArea = self.findChild(QtWidgets.QLabel, 'spiral_cw_draw')
 		self.SpiralLineArea = self.findChild(QtWidgets.QLabel, 'line_draw')
+		self.currAccelDeviceLabel = self.findChild(QtWidgets.QLabel, 'current_device_label')
 
 		# Create instances of DrawingLabel
 		self.drawingAreaCCW = DrawingArea('ims/spiral_ccw_big.png', self.SpiralCCWArea.parent())
@@ -288,6 +296,7 @@ class spiralDrawSystem(QtWidgets.QMainWindow):
 		self.accelCasesList = self.findChild(QtWidgets.QListView, 'accelCases')
 		self.currentSpiralsView = self.findChild(QtWidgets.QListView, 'current_spirals_view')
 		self.currentAccelView = self.findChild(QtWidgets.QListView, 'current_accel_view')
+		self.DeviceList = self.findChild(QtWidgets.QListView, 'device_list')
 
 		# Add all previous cases in the QListView Object
 		for item in self.prev_pt_lists:
@@ -914,6 +923,26 @@ class spiralDrawSystem(QtWidgets.QMainWindow):
 	###############################################################################################
 	## Button Click Functions
 	###############################################################################################
+
+	# Scan for available BT devices
+	def scan_update_device(self):
+		# Scan for devices
+		accelDevice.scan_devices()
+
+		for i in length(accelDevice.MetaWearDetected):
+			self.DeviceList.addItem(accelDevice.MetaWearDetected[i])
+
+	# Add and select the device to connect to
+	def set_accel_btid(self):
+
+		# Set the accelerometer device by the currently selected item
+		self.accel_address = self.DeviceList.currentItem().text()
+		accelDevice.address = self.accel_address
+		print(self.accel_address)
+
+		# Update the label
+		currAccelDeviceLabel.setText(self.accel_address)
+
 
 	# Function to start the case
 	def start_case(self):
