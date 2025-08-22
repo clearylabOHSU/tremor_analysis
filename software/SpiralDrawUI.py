@@ -69,7 +69,6 @@ class spiralDrawSystem(QtWidgets.QMainWindow):
 		# If the base directory doesnt exist, make it
 		if not os.path.exists(self.basePath):
 			os.mkdir(self.basePath)
-pnfdhk9748
 		self.pt_id = ''
 		self.data_save_path = ''
 		self.current_trial = ''
