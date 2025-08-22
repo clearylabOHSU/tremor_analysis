@@ -1170,6 +1170,9 @@ class spiralDrawSystem(QtWidgets.QMainWindow):
 		else:
 			tmp_str = ''
 
+		print(self.accel_files)
+		print(tmp_str)
+
 		if tmp_str == '' or (tmp_str in self.accel_files):
 			self.accelDeviceUpdates.setText('Please select an unused trial name.')
 			self.accelDeviceUpdates.setStyleSheet('Color: red;')
@@ -1183,16 +1186,6 @@ class spiralDrawSystem(QtWidgets.QMainWindow):
 			self.accelDeviceUpdates.setText('Please select a device and try again.')
 			self.accelDeviceUpdates.setStyleSheet('Color: red;')
 			return
-		'''
-		if self.penRadioButton.isChecked():
-			self.accel_address = 'C5:02:6A:76:E4:5D'
-		elif self.tabletRadioButton.isChecked():
-			self.accel_address = 'DA:83:E6:EE:AB:BF'
-		elif self.spiralOnlyRadioButton.isChecked():
-			self.accel_address = ''
-		else:
-			self.accel_address = 'C5:02:6A:76:E4:5D'
-		'''
 
 		# Disable the record button
 		self.recordAccelButton.setEnabled(False)
