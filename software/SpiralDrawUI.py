@@ -1458,7 +1458,7 @@ class spiralDrawSystem(QtWidgets.QMainWindow):
 	# Function to cancel the accelerometer recording button
 	def cancel_accel_record(self):
 
-		if not self.spiralOnlyRadioButton.isChecked():
+		if self.accel_address != 'No Device - Spiral Only':
 			# Signal to UI that the data is being downloaded
 			self.accelDeviceUpdates.setText('Cancel and Reset...')
 			self.accelDeviceUpdates.setStyleSheet('Color: black;')
@@ -1471,10 +1471,10 @@ class spiralDrawSystem(QtWidgets.QMainWindow):
 		app.processEvents()
 
 		isCanceled = False
-		if not self.spiralOnlyRadioButton.isChecked():
+		if self.accel_address != 'No Device - Spiral Only':
 			isCanceled = self.accelDevice.cancel_record()
 
-		if isCanceled or self.spiralOnlyRadioButton.isChecked():
+		if isCanceled or self.accel_address == 'No Device - Spiral Only':
 			# Disable buttons and add trial to list
 			self.trialNameAccelerom.setEnabled(True)
 			self.recordAccelButton.setEnabled(True)
