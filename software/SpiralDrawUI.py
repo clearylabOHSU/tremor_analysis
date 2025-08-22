@@ -69,7 +69,7 @@ class spiralDrawSystem(QtWidgets.QMainWindow):
 		# If the base directory doesnt exist, make it
 		if not os.path.exists(self.basePath):
 			os.mkdir(self.basePath)
-
+pnfdhk9748
 		self.pt_id = ''
 		self.data_save_path = ''
 		self.current_trial = ''
@@ -1380,6 +1380,11 @@ class spiralDrawSystem(QtWidgets.QMainWindow):
 			#Force GUI to update (needed due to many sleep() calls associated with BT device)
 			app.processEvents()
 
+			# Save the spirals
+			self.onDoneCCW()
+			self.onDoneCW()
+			self.onDoneLine()
+
 			print('. Done.... Ready for next trial')
 		else:
 			# Signal to UI that the data is being downloaded
@@ -1434,6 +1439,10 @@ class spiralDrawSystem(QtWidgets.QMainWindow):
 			app.processEvents()
 
 			self.current_trial = ''
+
+			# Clear the spirals
+			self.onClearDrawings()
+
 			print('Canceled')
 		else:
 			# Signal to UI that the data is being downloaded
