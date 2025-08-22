@@ -945,6 +945,7 @@ class spiralDrawSystem(QtWidgets.QMainWindow):
 			return
 
 		if self.deviceList.currentItem().text() == 'No Device - Spiral Only':
+			self.accel_address = self.deviceList.currentItem().text()
 			return
 
 		if self.deviceList.currentItem().text() is not None:
@@ -953,8 +954,8 @@ class spiralDrawSystem(QtWidgets.QMainWindow):
 			self.accelDevice.address = self.accel_address
 			print(self.accel_address)
 
-			# Update the label
-			self.currAccelDeviceLabel.setText(self.accel_address)
+		# Update the label
+		self.currAccelDeviceLabel.setText(self.accel_address)
 
 
 	# Function to start the case
