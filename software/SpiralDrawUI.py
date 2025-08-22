@@ -927,17 +927,17 @@ class spiralDrawSystem(QtWidgets.QMainWindow):
 	# Scan for available BT devices
 	def scan_update_device(self):
 		# Scan for devices
-		accelDevice.scan_devices()
+		self.accelDevice.scan_devices()
 
-		for i in length(accelDevice.MetaWearDetected):
-			self.DeviceList.addItem(accelDevice.MetaWearDetected[i])
+		for i in length(self.accelDevice.MetaWearDetected):
+			self.DeviceList.addItem(self.accelDevice.MetaWearDetected[i])
 
 	# Add and select the device to connect to
 	def set_accel_btid(self):
 
 		# Set the accelerometer device by the currently selected item
 		self.accel_address = self.DeviceList.currentItem().text()
-		accelDevice.address = self.accel_address
+		self.accelDevice.address = self.accel_address
 		print(self.accel_address)
 
 		# Update the label
