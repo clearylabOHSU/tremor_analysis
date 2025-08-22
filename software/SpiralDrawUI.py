@@ -1171,6 +1171,8 @@ class spiralDrawSystem(QtWidgets.QMainWindow):
 			tmp_str = ''
 
 		if tmp_str == '' or (tmp_str in self.accel_files):
+			self.accelDeviceUpdates.setText('Please select an unused trial name.')
+			self.accelDeviceUpdates.setStyleSheet('Color: red;')
 			return
 		else:
 			self.current_trial = tmp_str
@@ -1180,12 +1182,6 @@ class spiralDrawSystem(QtWidgets.QMainWindow):
 			# Update user that user needs to select device
 			self.accelDeviceUpdates.setText('Please select a device and try again.')
 			self.accelDeviceUpdates.setStyleSheet('Color: red;')
-
-			# Enable the record button
-			self.recordAccelButton.setEnabled(True)
-
-			#Force GUI to update (needed due to many sleep() calls associated with BT device)
-			app.processEvents()
 			return
 		'''
 		if self.penRadioButton.isChecked():
