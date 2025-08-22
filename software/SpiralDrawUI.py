@@ -1284,7 +1284,7 @@ class spiralDrawSystem(QtWidgets.QMainWindow):
 	def download_accel(self):
 
 		# If no accelerometer used, do not download
-		if self.spiralOnlyRadioButton.isChecked():
+		if self.accel_address == 'No Device - Spiral Only':
 
 			# Get the accelerometer data and write it to file
 			if self.current_trial != 'test':
