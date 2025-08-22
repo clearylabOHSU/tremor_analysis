@@ -1156,6 +1156,7 @@ class spiralDrawSystem(QtWidgets.QMainWindow):
 
 		elif self.intraopRadioButton.isChecked():
 			tmp_str = 'intraop' + str(self.intraopValueFeild.value())
+			self.intraop_current = self.intraopValueFeild.value()
 
 		elif self.postopRadioButton.isChecked():
 			tmp_str = 'postop'
