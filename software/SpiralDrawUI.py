@@ -1176,6 +1176,18 @@ class spiralDrawSystem(QtWidgets.QMainWindow):
 			self.current_trial = tmp_str
 
 		# Set the proper BT address
+		if self.accel_address == '':
+			# Update user that user needs to select device
+			self.accelDeviceUpdates.setText('Please select a device and try again.')
+			self.accelDeviceUpdates.setStyleSheet('Color: red;')
+
+			# Enable the record button
+			self.recordAccelButton.setEnabled(True)
+
+			#Force GUI to update (needed due to many sleep() calls associated with BT device)
+			app.processEvents()
+			return
+		'''
 		if self.penRadioButton.isChecked():
 			self.accel_address = 'C5:02:6A:76:E4:5D'
 		elif self.tabletRadioButton.isChecked():
@@ -1184,12 +1196,13 @@ class spiralDrawSystem(QtWidgets.QMainWindow):
 			self.accel_address = ''
 		else:
 			self.accel_address = 'C5:02:6A:76:E4:5D'
+		'''
 
 		# Disable the record button
 		self.recordAccelButton.setEnabled(False)
 
 		# Update user thatdevice is being set up
-		if not self.spiralOnlyRadioButton.isChecked():
+		if self.accel_address != 'No Device - Spiral Only':
 			self.accelDeviceUpdates.setText('Connecting to device ...')
 			self.accelDeviceUpdates.setStyleSheet('Color: black;')
 
