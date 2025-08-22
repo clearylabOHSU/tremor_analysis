@@ -746,7 +746,7 @@
       <property name="title">
        <string>Select Device</string>
       </property>
-      <widget class="QListWidget" name="device_list">
+      <widget class="QListWidget" name="bt_device_list">
        <property name="geometry">
         <rect>
          <x>20</x>
