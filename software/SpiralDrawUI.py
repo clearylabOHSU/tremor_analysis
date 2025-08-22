@@ -946,9 +946,7 @@ class spiralDrawSystem(QtWidgets.QMainWindow):
 
 		if self.deviceList.currentItem().text() == 'No Device - Spiral Only':
 			self.accel_address = self.deviceList.currentItem().text()
-			return
-
-		if self.deviceList.currentItem().text() is not None:
+		elif self.deviceList.currentItem().text() is not None:
 			# Set the accelerometer device by the currently selected item
 			self.accel_address = self.deviceList.currentItem().text()
 			self.accelDevice.address = self.accel_address
