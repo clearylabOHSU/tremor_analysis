@@ -929,6 +929,7 @@ class spiralDrawSystem(QtWidgets.QMainWindow):
 		# Scan for devices
 		self.accelDevice.scan_devices()
 
+		self.deviceList.clear()
 		for i in range(len(self.accelDevice.MetaWearDetected)):
 			self.deviceList.addItem(self.accelDevice.MetaWearDetected[i])
 
