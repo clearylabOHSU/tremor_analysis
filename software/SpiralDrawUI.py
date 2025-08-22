@@ -935,14 +935,14 @@ class spiralDrawSystem(QtWidgets.QMainWindow):
 
 	# Add and select the device to connect to
 	def set_accel_btid(self):
+		if self.deviceList.currentItem().text() is not None:
+			# Set the accelerometer device by the currently selected item
+			self.accel_address = self.deviceList.currentItem().text()
+			self.accelDevice.address = self.accel_address
+			print(self.accel_address)
 
-		# Set the accelerometer device by the currently selected item
-		self.accel_address = self.deviceList.currentItem().text()
-		self.accelDevice.address = self.accel_address
-		print(self.accel_address)
-
-		# Update the label
-		self.currAccelDeviceLabel.setText(self.accel_address)
+			# Update the label
+			self.currAccelDeviceLabel.setText(self.accel_address)
 
 
 	# Function to start the case
