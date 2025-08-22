@@ -296,7 +296,7 @@ class spiralDrawSystem(QtWidgets.QMainWindow):
 		self.accelCasesList = self.findChild(QtWidgets.QListView, 'accelCases')
 		self.currentSpiralsView = self.findChild(QtWidgets.QListView, 'current_spirals_view')
 		self.currentAccelView = self.findChild(QtWidgets.QListView, 'current_accel_view')
-		self.DeviceList = self.findChild(QtWidgets.QListView, 'device_list')
+		self.deviceList = self.findChild(QtWidgets.QListView, 'device_list')
 
 		# Add all previous cases in the QListView Object
 		for item in self.prev_pt_lists:
@@ -930,7 +930,7 @@ class spiralDrawSystem(QtWidgets.QMainWindow):
 		self.accelDevice.scan_devices()
 
 		for i in range(len(self.accelDevice.MetaWearDetected)):
-			self.DeviceList.addItem(self.accelDevice.MetaWearDetected[i])
+			self.deviceList.addItem(self.accelDevice.MetaWearDetected[i])
 
 	# Add and select the device to connect to
 	def set_accel_btid(self):
