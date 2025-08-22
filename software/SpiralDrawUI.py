@@ -929,7 +929,7 @@ class spiralDrawSystem(QtWidgets.QMainWindow):
 		# Scan for devices
 		self.accelDevice.scan_devices()
 
-		for i in len(self.accelDevice.MetaWearDetected):
+		for i in range(len(self.accelDevice.MetaWearDetected)):
 			self.DeviceList.addItem(self.accelDevice.MetaWearDetected[i])
 
 	# Add and select the device to connect to
