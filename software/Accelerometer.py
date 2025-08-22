@@ -275,3 +275,5 @@ class Accelerometer:
 		for address, name in six.iteritems(devices):
 			if name =='MetaWear':
 				self.MetaWearDetected.append(address)
+
+		print(self.MetaWearDetected)
