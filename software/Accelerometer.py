@@ -7,12 +7,13 @@ from time import sleep
 class Accelerometer:
 
 	# Setup function
-	def __init__(self, address, fpath='', fs=100):
+	def __init__(self, address='', fpath='', fs=100):
 		self.address = address
 		self.fs = fs
 		self.device = MetaWear(address)
 		self.signal = []
 		self.logger = []
+		self.MetaWearDetected = []
 		if fpath != '':
 			self.f = open(fpath, 'w')
 			#sleep(0.1)
@@ -257,3 +258,19 @@ class Accelerometer:
 		except RuntimeError as err:
 			print(err)
 			return False
+
+	# Scan for available devices
+	def scan_devices(self):
+		devices = {}
+
+		def handler(result):
+			devices[result.mac] = result.name
+
+		BleScanner.set_handler(handler)
+		BleScanner.start()
+		sleep(5.0)
+		BleScanner.stop()
+
+		for address, name in six.iteritems(devices):
+			if name =='MetaWear':
+				self.MetaWearDetected.append(address)

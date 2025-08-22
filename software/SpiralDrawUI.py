@@ -85,11 +85,13 @@ class spiralDrawSystem(QtWidgets.QMainWindow):
 		self.baseline_f_peak_val = None
 
 		# Acclerometer
-		self.accel_address = 'C5:02:6A:76:E4:5D'
+		#self.accel_address = 'C5:02:6A:76:E4:5D'
+		self.accel_address = ''
 		self.accelDevice = Accelerometer(self.accel_address)
 
 		# Ensure device is not
-		self.accelDevice.scan_connect()
+		#self.accelDevice.scan_connect()
+		#self.accelDevice.scan_devices()
 
 		# Spiral
 		self.previous_spiral_ccw = ''
