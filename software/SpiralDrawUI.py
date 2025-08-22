@@ -1348,6 +1348,11 @@ class spiralDrawSystem(QtWidgets.QMainWindow):
 				fl.write(self.current_trial + '\n')
 				fl.close()
 
+			# Save the spirals that have not been saved yet
+			self.onDoneCCW()
+			self.onDoneCW()
+			self.onDoneLine()
+
 			# Disable buttons and add trial to list
 			if self.current_trial != 'test':
 				self.accelCasesList.addItem(self.current_trial)
@@ -1378,12 +1383,6 @@ class spiralDrawSystem(QtWidgets.QMainWindow):
 
 			#Force GUI to update (needed due to many sleep() calls associated with BT device)
 			app.processEvents()
-
-			# Save the spirals
-			self.onDoneCCW()
-			self.onDoneCW()
-			self.onDoneLine()
-
 			print('. Done.... Ready for next trial')
 		else:
 			# Signal to UI that the data is being downloaded
