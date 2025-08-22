@@ -89,9 +89,6 @@ class spiralDrawSystem(QtWidgets.QMainWindow):
 		self.accel_address = ''
 		self.accelDevice = Accelerometer()
 
-		# Scan for BT devices
-		self.scan_update_device()
-
 		# Ensure device is not
 		#self.accelDevice.scan_connect()
 		#self.accelDevice.scan_devices()
@@ -296,11 +293,14 @@ class spiralDrawSystem(QtWidgets.QMainWindow):
 		self.accelCasesList = self.findChild(QtWidgets.QListView, 'accelCases')
 		self.currentSpiralsView = self.findChild(QtWidgets.QListView, 'current_spirals_view')
 		self.currentAccelView = self.findChild(QtWidgets.QListView, 'current_accel_view')
-		self.deviceList = self.findChild(QtWidgets.QListView, 'device_list')
+		self.deviceList = self.findChild(QtWidgets.QListView, 'bt_device_list')
 
 		# Add all previous cases in the QListView Object
 		for item in self.prev_pt_lists:
 			self.patientList.addItem(item)
+
+		# Scan for BT devices
+		self.scan_update_device()
 
 		# Disable Drawing
 		self.spiralTab.setEnabled(False)
