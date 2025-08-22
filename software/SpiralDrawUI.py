@@ -1310,6 +1310,11 @@ class spiralDrawSystem(QtWidgets.QMainWindow):
 			# Disable Drawing
 			self.spiralTab.setEnabled(False)
 
+			# Save the spirals that have not been saved yet
+			self.onDoneCCW()
+			self.onDoneCW()
+			self.onDoneLine()
+
 			# Signal to UI that the data is being downloaded
 			self.accelDeviceUpdates.setText('Done. Ready for next trial.')
 			self.accelDeviceUpdates.setStyleSheet('Color: green;')
