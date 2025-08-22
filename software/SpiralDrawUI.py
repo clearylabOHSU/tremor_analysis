@@ -933,7 +933,7 @@ class spiralDrawSystem(QtWidgets.QMainWindow):
 		for i in range(len(self.accelDevice.MetaWearDetected)):
 			self.deviceList.addItem(self.accelDevice.MetaWearDetected[i])
 
-		self.deviceList.addItem('No Accel - Spiral Only')
+		self.deviceList.addItem('No Device - Spiral Only')
 
 	# Add and select the device to connect to
 	def set_accel_btid(self):
@@ -942,6 +942,9 @@ class spiralDrawSystem(QtWidgets.QMainWindow):
 		try:
 			self.deviceList.currentItem().text()
 		except:
+			return
+
+		if self.deviceList.currentItem().text() == 'No Device - Spiral Only':
 			return
 
 		if self.deviceList.currentItem().text() is not None:
