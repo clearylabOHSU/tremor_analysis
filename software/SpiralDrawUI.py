@@ -936,7 +936,7 @@ class spiralDrawSystem(QtWidgets.QMainWindow):
 	def set_accel_btid(self):
 
 		# Set the accelerometer device by the currently selected item
-		self.accel_address = self.DeviceList.currentItem().text()
+		self.accel_address = self.deviceList.currentItem().text()
 		self.accelDevice.address = self.accel_address
 		print(self.accel_address)
 
