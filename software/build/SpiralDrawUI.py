@@ -24,7 +24,10 @@ from PyQt5.QtCore import QObject, QThread, pyqtSignal
 from datetime import datetime
 
 # UI Setup
-app = QtWidgets.QApplication(sys.argv)
+
+# // CHANGE THIS FOR SOURCE
+#app = QtWidgets.QApplication(sys.argv)
+##
 
 class spiralDrawSystem(QtWidgets.QMainWindow):
 
@@ -43,16 +46,19 @@ class spiralDrawSystem(QtWidgets.QMainWindow):
 			print('Windows Detected')
 			if os.path.isdir('C:/hifu/'):
 				self.basePath = 'C:/hifu/HIFU-cases/'
-				self.application_path = 'C:/hifu/tremor_analysis/software/build/'
+				#self.application_path = 'C:/hifu/tremor_analysis/software/build/'
 			else:
 				self.basePath = 'C:/Users/hifuo/HIFU-cases/'
-				self.application_path = 'C:/Users/hifuo/tremor_analysis/software/build/'
+				#self.application_path = 'C:/Users/hifuo/tremor_analysis/software/build/'
 
 		else:
 			tmpdir = os.getcwd()
 			tmpdir = tmpdir.split('/')
 			self.basePath = '/' + tmpdir[1] + '/'+ tmpdir[2] + '/HIFU-cases/'
-			self.application_path = '/' + tmpdir[1] + '/'+ tmpdir[2] + '/tremor_analysis/software/build/'
+			#self.application_path = '/' + tmpdir[1] + '/'+ tmpdir[2] + '/tremor_analysis/software/build/'
+		
+		# IN SOURCE BUILD, COMMENT OUT THE LINES WITH self.application_path ABOVE AND ONLY USE THIS LINE
+		self.application_path = getattr(sys, '_MEIPASS', os.path.dirname(os.path.abspath(__file__))) + os.sep
 
 		os.chdir(self.application_path)
 
