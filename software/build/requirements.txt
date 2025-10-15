@@ -1,0 +1,6 @@
+pyinstaller
+PyQt5
+reportlab
+matplotlib
+bleak
+metawear
