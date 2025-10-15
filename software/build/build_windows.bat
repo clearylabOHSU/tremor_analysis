@@ -49,7 +49,7 @@ echo [INFO] Building onefile EXE...
 pyinstaller ^
   --onefile --noconsole ^
   --name "%APPNAME%" ^
-  --collect-plugins PyQt5 ^
+  --collect-all PyQt5 ^
   --collect-submodules bleak ^
   --collect-binaries bleak ^
   --collect-submodules mbientlab ^
