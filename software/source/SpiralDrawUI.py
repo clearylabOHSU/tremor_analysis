@@ -43,16 +43,16 @@ class spiralDrawSystem(QtWidgets.QMainWindow):
 			print('Windows Detected')
 			if os.path.isdir('C:/hifu/'):
 				self.basePath = 'C:/hifu/HIFU-cases/'
-				self.application_path = 'C:/hifu/tremor_analysis/software/'
+				self.application_path = 'C:/hifu/tremor_analysis/software/source/'
 			else:
 				self.basePath = 'C:/Users/hifuo/HIFU-cases/'
-				self.application_path = 'C:/Users/hifuo/tremor_analysis/software/'
+				self.application_path = 'C:/Users/hifuo/tremor_analysis/software/source/'
 
 		else:
 			tmpdir = os.getcwd()
 			tmpdir = tmpdir.split('/')
 			self.basePath = '/' + tmpdir[1] + '/'+ tmpdir[2] + '/HIFU-cases/'
-			self.application_path = '/' + tmpdir[1] + '/'+ tmpdir[2] + '/tremor_analysis/software/'
+			self.application_path = '/' + tmpdir[1] + '/'+ tmpdir[2] + '/tremor_analysis/software/source/'
 
 		os.chdir(self.application_path)
 
