@@ -1,9 +1,9 @@
 @echo off
 setlocal enabledelayedexpansion
 
-REM ===== Settings you can tweak =====
+REM ===== Settings to tweak =====
 set "APPNAME=HIFU-Spiral"
-set "MAINPY=SpiralDrawUI.py"
+set "SPEC=HIFU-Spiral.spec"
 
 REM ===== Go to the script's directory =====
 cd /d "%~dp0"
@@ -21,12 +21,7 @@ if not exist .venv (
   echo [INFO] Creating virtual environment...
   py -m venv .venv
 )
-call ".venv\Scripts\activate.bat"
-if errorlevel 1 (
-  echo [ERROR] Could not activate venv.
-  pause
-  exit /b 1
-)
+call ".venv\Scripts\activate.bat" || (echo [ERROR] Could not activate venv.& pause & exit /b 1)
 
 REM ===== Upgrade pip/wheel =====
 python -m pip install -U pip wheel
@@ -42,25 +37,12 @@ if exist requirements.txt (
 REM ===== Clean previous build outputs =====
 if exist build rd /s /q build
 if exist dist rd /s /q dist
-if exist "%APPNAME%.spec" del "%APPNAME%.spec"
+REM Do NOT delete the spec you want to use.
+REM if exist "%APPNAME%.spec" del "%APPNAME%.spec"
 
-REM ===== Build onefile EXE =====
-echo [INFO] Building onefile EXE...
-pyinstaller ^
-  --onefile --noconsole ^
-  --name "%APPNAME%" ^
-  --collect-all PyQt5 ^
-  --collect-submodules bleak ^
-  --collect-binaries bleak ^
-  --collect-submodules mbientlab ^
-  --collect-submodules mbientlab.metawear ^
-  --collect-binaries metawear ^
-  --collect-binaries mbientlab.metawear ^
-  --collect-binaries warble ^
-  --add-data "spiralDraw.ui;." ^
-  --add-data "ims;ims" ^
-  "%MAINPY%"
-
+REM ===== Build (ONEDIR for first run) =====
+echo [INFO] Building (onedir) with %SPEC% ...
+pyinstaller --clean --log-level=DEBUG "%SPEC%"
 if errorlevel 1 (
   echo [ERROR] PyInstaller failed.
   pause
@@ -68,6 +50,8 @@ if errorlevel 1 (
 )
 
 echo.
-echo [SUCCESS] EXE ready: dist\%APPNAME%.exe
-echo        You can copy that .exe to any Windows 10/11 machine.
+echo [SUCCESS] Onedir build ready:
+echo   dist\%APPNAME%\%APPNAME%.exe
+echo Run that first to verify. If it works, build onefile with:
+echo   pyinstaller --clean --onefile "%SPEC%"
 pause
