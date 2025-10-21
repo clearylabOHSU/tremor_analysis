@@ -3,7 +3,6 @@ setlocal enabledelayedexpansion
 
 REM ===== Settings to tweak =====
 set "APPNAME=HIFU-Spiral"
-set "SPEC=HIFU-Spiral.spec"
 
 REM ===== Go to the script's directory =====
 cd /d "%~dp0"
@@ -41,8 +40,19 @@ REM Do NOT delete the spec you want to use.
 REM if exist "%APPNAME%.spec" del "%APPNAME%.spec"
 
 REM ===== Build (ONEDIR for first run) =====
-echo [INFO] Building (onedir) with %SPEC% ...
-pyinstaller --clean --log-level=DEBUG "%SPEC%"
+echo [INFO] Building (onedir) ...
+
+pyinstaller ^
+  --clean ^
+  --log-level=DEBUG ^
+  --onefile ^
+  --noconsole ^
+  --name "%APPNAME%" ^
+  --add-data "spiralDraw.ui;." ^
+  --add-data "ims;ims" ^
+  --add-binary "warble.dll;." ^
+  "%MAINPY%"
+  
 if errorlevel 1 (
   echo [ERROR] PyInstaller failed.
   pause
@@ -50,8 +60,6 @@ if errorlevel 1 (
 )
 
 echo.
-echo [SUCCESS] Onedir build ready:
-echo   dist\%APPNAME%\%APPNAME%.exe
-echo Run that first to verify. If it works, build onefile with:
-echo   pyinstaller --clean --onefile "%SPEC%"
+echo [SUCCESS]  build ready:
+echo   dist\%APPNAME%.exe
 pause

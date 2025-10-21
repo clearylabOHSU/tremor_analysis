@@ -1,8 +1,19 @@
+import os
+import sys
+import ctypes
+
+# Import warble from premade dll
+base_dir = getattr(sys, "_MEIPASS", os.path.dirname(sys.executable))
+warble_path = os.path.join(base_dir, "warble.dll")
+try:
+	os.add_dll_directory(base_dir)
+	ctypes.CDLL(warble_path)
+except Exception as e:
+	printf(f"Could not load warble.dll: {e}")
+
 from Accelerometer import *
 from PaintFunctions import *
 from PlotFunctions import *
-import os
-import sys
 import glob
 from reportlab.lib.pagesizes import letter
 from reportlab.pdfgen import canvas

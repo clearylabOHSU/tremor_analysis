@@ -1,7 +1,7 @@
 from mbientlab.metawear import MetaWear, libmetawear, parse_value, create_voidp, create_voidp_int
 from mbientlab.metawear.cbindings import *
 from threading import Event
-from mbientlab.warble import *
+#from mbientlab.warble import * # Warble should be imported from warble.dll
 from time import sleep
 import six
 
