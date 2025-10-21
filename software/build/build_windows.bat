@@ -3,17 +3,10 @@ setlocal enabledelayedexpansion
 
 REM ===== Settings to tweak =====
 set "APPNAME=HIFU-Spiral"
+set "MAINPY=SpiralDrawUI.py"
 
 REM ===== Go to the script's directory =====
 cd /d "%~dp0"
-
-REM ===== Check Python launcher =====
-where py >nul 2>nul
-if errorlevel 1 (
-  echo [ERROR] Python launcher "py" not found. Install Python from python.org and make sure "py" is on PATH.
-  pause
-  exit /b 1
-)
 
 REM ===== Create/activate venv =====
 if not exist .venv (
@@ -36,11 +29,9 @@ if exist requirements.txt (
 REM ===== Clean previous build outputs =====
 if exist build rd /s /q build
 if exist dist rd /s /q dist
-REM Do NOT delete the spec you want to use.
-REM if exist "%APPNAME%.spec" del "%APPNAME%.spec"
 
 REM ===== Build (ONEDIR for first run) =====
-echo [INFO] Building (onedir) ...
+echo [INFO] Building onefile EXE ...
 
 pyinstaller ^
   --clean ^
