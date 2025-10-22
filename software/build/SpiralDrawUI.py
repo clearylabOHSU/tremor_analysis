@@ -4,11 +4,12 @@ import ctypes
 
 # Import warble from premade dll
 base_dir = getattr(sys, "_MEIPASS", os.path.dirname(sys.executable))
-dll_dir = os.path.join(base_dir, "dll")
+warble_dir = os.path.join(base_dir, "mbientlab", "warble")
 metawear_dir = os.path.join(base_dir, "mbientlab", "metawear")
 try:
-	os.add_dll_directory(dll_dir)
-	ctypes.CDLL(os.path.join(dll_dir, "warble.dll"))
+	os.add_dll_directory(warble_dir)
+	os.add_dll_directory(metawear_dir)
+	ctypes.CDLL(os.path.join(warble_dir, "warble.dll"))
 	ctypes.CDLL(os.path.join(metawear_dir, "MetaWear.Win32.dll"))
 except Exception as e:
 	printf(f"Could not load warble.dll: {e}")
