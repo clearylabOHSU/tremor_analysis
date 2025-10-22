@@ -37,7 +37,7 @@ pyinstaller ^
   --clean ^
   --log-level=DEBUG ^
   --onefile ^
-  --noconsole ^
+  --console ^
   --name "%APPNAME%" ^
   --add-data "spiralDraw.ui;." ^
   --add-data "ims;ims" ^
