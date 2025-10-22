@@ -38,10 +38,8 @@ from PyQt5.QtCore import QObject, QThread, pyqtSignal
 from datetime import datetime
 
 # UI Setup
+app = QtWidgets.QApplication(sys.argv)
 
-# // CHANGE THIS FOR SOURCE
-#app = QtWidgets.QApplication(sys.argv)
-##
 
 class spiralDrawSystem(QtWidgets.QMainWindow):
 
