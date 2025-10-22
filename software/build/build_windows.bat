@@ -41,7 +41,7 @@ pyinstaller ^
   --name "%APPNAME%" ^
   --add-data "spiralDraw.ui;." ^
   --add-data "ims;ims" ^
-  --add-binary "warble.dll;." ^
+  --add-binary "dll/*.dll;dll" ^
   "%MAINPY%"
   
 if errorlevel 1 (
